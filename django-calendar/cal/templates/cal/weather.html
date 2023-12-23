@@ -1,0 +1,16 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}
+Weather
+{% endblock %}
+
+{% block content %}
+<div class="right"><a class="btn btn-info left" class="right" href="{% url 'cal:calendar'%}"> Calendar </a></div>
+<a class="btn btn-info left,right" href="{{request.META.HTTP_REFERER}}"> Previous </a>
+<br><br><br><br>
+<table id="weather">
+    <tr><th>Day:</th>{%for i in day %}<td> {{i}}</td> {%endfor%}</tr>
+    <tr><th>Description</th> {%for j in descreption %}<td>{{j}}</td>{%endfor%}</tr>
+    <tr><th>Temp</th>{%for k in temp %}<td>{{k}}</td> {%endfor%}</tr>
+</table>
+{% endblock%}

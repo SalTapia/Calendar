@@ -1,0 +1,20 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+<br></br>
+<div class="a">
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input class="btn btn-info" type="submit" name="login user">
+    </form>
+    <p>Don't have an account
+        <a href="{% url 'cal:register_page'%}">Sign up</a>
+    </p>
+    <a href="{% url 'cal:calendar'%}">Exit</a>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}
+Event
+{% endblock %}
+
+{% block content %}
+<div class="right"><a class="btn btn-info left" class="right" href="{% url 'cal:calendar'%}"> Calendar </a></div>
+<a class="btn btn-info left,right" href="{{request.META.HTTP_REFERER}}"> Previous </a>
+<div class="a">
+<form method = "POST" action="">
+    {% csrf_token %}
+    {{commentform.as_p}}
+    <input class="btn btn-info" type="Submit" value="Submit"/>    
+</form>
+</div>
+{% endblock %}

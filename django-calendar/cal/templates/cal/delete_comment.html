@@ -1,0 +1,4 @@
+<a class="btn btn-info left" href="{% url 'cal:calendar'%}"> Calendar </a>
+<br>
+Are you sure you want to delete
+<a class="btn btn-info right" href="{% url 'cal:delete_comment' comment_to_delete.id %}"> {{comment_to_delete.description}}?</a

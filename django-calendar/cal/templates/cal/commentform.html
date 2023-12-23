@@ -1,0 +1,36 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}
+Blog
+{% endblock %}
+
+{% block content %}
+<div>
+    <a class="btn btn-info left" href="{% url 'cal:calendar' %}"> Calendar </a>
+    <br></br><br></br>
+<form method = "POST" action="">
+    {% csrf_token %}
+    {{commentform.as_p}}
+    <input type="Submit" value="Submit"/>    
+</form>
+<br></br>
+<div>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+         {{ image_form.as_p }}
+        <button type="submit">Upload</button>
+      </form>
+      
+      {% if img_obj %}
+        <h3>Succesfully uploaded : {{img_obj.title}}</h3>
+        <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px">
+      {% endif %} 
+     </div>
+</div>
+<!-- {{i.name}} is the name that gets clicked on  -->
+{% for i in comments %} {% if i.like %}  {{i.name}}, Event: <a style="color: blue;" href="{% url 'cal:comment_selection' i.id %}" > {{i.event}} </a>  {% else %} {{i.name}} Event: <a style="color:red;" href="{% url 'cal:comment_selection' i.id %}"> {{i.event}}, </a> {% endif %}<br>{{i.description}}</br><br> {% endfor %}
+<div class="text-center"> 
+<h2 class="btn btn-info"> Likes {{like}} </h2> 
+<h2 class="btn btn-info"> Dislikes {{dislike}} </h2> 
+</div>
+{% endblock%}

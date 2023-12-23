@@ -1,0 +1,55 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block content %}
+<div class="right">
+  <a class="btn btn-info left" class="right" href="{% url 'cal:calendar'%}"> Calendar</a>
+</div>
+<a class="btn btn-info" href="{{request.META.HTTP_REFERER}}">Previous</a>
+<br><br>
+<div class="a">
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{commentform.errors}}
+    {{commentform.name.label_tag}}
+    {{commentform.name}}
+    <br>
+    <br>
+    {{commentform.description.label_tag}}
+    {{commentform.description}}
+    <br>
+    <br>
+    Image:{{image.label_tag}}
+    {{commentform.image}}
+    <br>
+    <br>
+    Video:{{video.label_tag}}
+    {{commentform.video}}
+    <br>
+    <br>
+    {{event.label_tag}}
+    {{commentform.event.as_hidden}}
+    <input class="btn btn-info" type="Submit" value="Submit" />
+  </form>
+<hr>
+</div>
+<br>
+<div class="text-center">
+  {% for i in comments %}
+    <a>{% if i.image %}<img src="{{i.image.url}}" , alt="" style="max-height:300px"> </a>
+  {%endif%}
+  {% if i.video %}
+    <video width='530' controls>
+      <source src="{{i.video.url}}" type='video/mp4'>
+    </video>
+  {%endif%}
+  <div class="text-center"> {{i.name}}, <br> <a href="{% url 'cal:comment_selection' i.id %}">
+    {{i.description}} </a> </br>Posted on {{i.created}}</br><br>
+    <hr>
+  </div>
+  
+  {% endfor %}
+  {% endblock%}

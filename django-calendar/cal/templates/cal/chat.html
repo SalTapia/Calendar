@@ -1,0 +1,15 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}
+Chat
+{% endblock %}
+
+{% block content %}
+
+<div class="right">
+    <a class="btn btn-info left" class="right" href="{% url 'cal:calendar'%}"> Calendar </a>
+</div>
+<a class="btn btn-info" href="{{request.META.HTTP_REFERER}}"> Previous </a>
+<div class="text-center">
+    {% include 'chat/index.html' %}
+{% endblock%}

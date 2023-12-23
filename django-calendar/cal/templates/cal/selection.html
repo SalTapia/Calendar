@@ -1,0 +1,26 @@
+{% extends 'cal/base.html' %}
+
+{% block title %}
+{{event_title}}
+{% endblock %}
+
+{% block content %}
+
+<div class="right">
+<a class="btn btn-info left" class="right" href="{% url 'cal:calendar'%}"> Calendar </a>
+ </div>
+<a class="btn btn-info left,right" href="{% url 'cal:calendar'%}"> Previous </a>
+<div class="text-center">
+<a class="btn btn-info " href="{% url 'cal:upload' id%}"> Blog</a>
+<a class="btn btn-info " href="{% url 'cal:chat'%}"> Chat</a>
+<a class="btn btn-info " href="{% url 'cal:weather' id%}"> Weather </a>
+<a class="btn btn-info " href="{% url 'cal:edit' id%}"> Edit Event </a>
+<a class="btn btn-info " href="{% url 'cal:delete' id%}"> Delete Event </a>
+<br>
+<br>
+<form method="POST">
+{% csrf_token %}
+<button class="btn btn-info" type="Submit" value="Like" href="{% url 'cal:event' id%}"> 
+ {{post_likes}} Likes 
+</form>
+{% endblock %}
