@@ -1,4 +1,4 @@
-Adapted from Hui Wen
-Chat-Djnago Channels
+Adapted from Hui Wen <br/>
+Chat-Djnago Channels <br/>
 Added a chat utility, weather checker, image and video file sharing.
 
