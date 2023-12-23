@@ -3,7 +3,7 @@
 ![Screenshot from 2023-12-22 22-31-44](https://github.com/SalTapia/Calendar/assets/89614796/c6c2893a-786a-4be2-a452-c0637cfa375f)
 
 Adapted from Hui Wen <br/>
-Chat-Django Channels <br/>
+Django-chat Channels <br/>
 Added a chat utility, weather checker, blog, login, image, and video file sharing.
 
 
